@@ -7,3 +7,17 @@ A diferencia de los Trabajos Prácticos (TPs), estos ejercicios **no se entregan
 ## Contenido
 
 - *(Aquí podrás listar los distintos ejercicios o archivos a medida que los vayas creando)*
+
+## JavaCodingChallenge (OneCompiler a NetBeans)
+
+Para familiarizarnos con las herramientas de la cursada, como el IDE NetBeans, los ejercicios originales de OneCompiler se están desarrollando y ejecutando localmente siguiendo buenas prácticas.
+
+La configuración del proyecto en NetBeans para estos ejercicios es la siguiente:
+- **Project Name**: JavaCodingChallenge
+- **Group Id**: `ar.edu.unsa`
+- **Artifact Id**: JavaCodingChallenge
+- **Version**: `1.0-SNAPSHOT`
+- **Package**: `ar.edu.unsa.javacodingchallenge`
+
+![Configuración NetBeans](../../docs/assets/netbeans_config.png)
+
