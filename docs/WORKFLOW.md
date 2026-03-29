@@ -50,4 +50,22 @@ Este comando extrae únicamente el historial de la carpeta del TP y lo empuja a 
 git subtree push --prefix UNSa/TP01 profe-tp1 main
 ```
 
-**Resultado:** El repositorio remoto del profesor recibirá solo el contenido y el historial de commits de la carpeta `UNSa/TP01`, limpio y sin el resto de los archivos del monorepo.
+## 🚨 FAQ / Troubleshooting (Problemas Comunes con Git)
+
+### 1. Archivos "Untracked" al crear un nuevo proyecto en subcarpetas
+
+**Problema:** Creaste un nuevo proyecto (ej. en NetBeans o IntelliJ) dentro de una subcarpeta (como `UNSa/desafio_repaso/JavaCodingChallenge`) y al hacer `git status`, la carpeta entera aparece en rojo como `Untracked files`.
+
+**Por qué sucede:** Git detecta archivos nuevos que aún no están siendo rastreados por el control de versiones. Es el comportamiento normal de Git.
+
+**Solución Correcta:**
+1. **NO ejecutes `git init`** dentro de la nueva carpeta. El monorepo ya está inicializado en la raíz. Hacerlo crearía un submódulo accidental y rompería el repositorio.
+2. Agrega la carpeta al área de preparación (staging) desde la raíz del monorepo:
+   ```bash
+   git add ruta/a/tu/nueva/carpeta/
+   ```
+3. Crea el commit y haz push normalmente:
+   ```bash
+   git commit -m "chore: inicializar nuevo proyecto [Nombre]"
+   git push
+   ```

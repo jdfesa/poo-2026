@@ -65,4 +65,9 @@ Para la resolución de los 15 ejercicios propuestos originalmente en OneCompiler
 - [ ] Ejercicio 14: Calculate area of a triangle
 - [ ] Ejercicio 15: Check if a given number is palindrome or not
 
+---
+
+### ❓ Dudas sobre Git (Archivos Untracked, git init)
+Si al crear este proyecto de NetBeans has notado que toda la carpeta aparece como **`Untracked files`** (en rojo) al hacer `git status`, y no estás seguro de si debes hacer `git init` o cómo hacer el primer commit, **por favor, revisa la sección de Troubleshooting en nuestro [WORKFLOW.md](../../docs/WORKFLOW.md#1-archivos-untracked-al-crear-un-nuevo-proyecto-en-subcarpetas)** donde documentamos paso a paso el flujo correcto para monorepos.
+
 
