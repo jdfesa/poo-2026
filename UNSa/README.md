@@ -7,7 +7,7 @@ Aquí, todos los desarrollos están enfocados en el lenguaje **Java** y utilizan
 
 Si estás configurando tu entorno o es tu primera vez usando Java, a continuación tienes un rápido video introductorio (1 min) sobre cómo crear tu primer proyecto en el IDE NetBeans:
 
-![Cómo crear tu primer programa en NetBeans](../docs/assets/Como-crear-un-PROGRAMA-en-NETBEANS.gif)
+https://github.com/user-attachments/assets/f6c353c8-41dc-49b5-be7f-b59480df8e07
 
 ---
 
@@ -23,8 +23,3 @@ Si estás configurando tu entorno o es tu primera vez usando Java, a continuaci�
 
 > 💡 **Recordatorio sobre las entregas:**
 > Cada TP (como `TP01` o `TP02`) cuenta con su propio `.gitignore` configurado para ignorar los binarios (`.class`, carpetas `build/`). Al finalizar un TP, utiliza el comando `git subtree` según lo indicado en el [Flujo de Trabajo (WORKFLOW.md)](../docs/WORKFLOW.md) para enviar tu código limpio al repositorio del profesor.
->
-> 
-
-https://github.com/user-attachments/assets/f6c353c8-41dc-49b5-be7f-b59480df8e07
-
