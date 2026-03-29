@@ -46,6 +46,8 @@ Para la resolución de los 15 ejercicios propuestos originalmente en OneCompiler
    git commit -m "feat(desafio): implementar EjercicioXX - [Nombre corto del ejercicio]"
    git push
    ```
+   *Ejemplo del flujo de trabajo de Git funcionando desde la terminal integrada del IDE:*
+   ![Primer Commit NetBeans](../../docs/assets/primer_commit_netbeans.png)
 
 ### Progreso de Ejercicios (OneCompiler)
 
