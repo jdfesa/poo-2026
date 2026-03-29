@@ -14,7 +14,7 @@ poo-2026/
 │   ├── TP01/
 │   └── TP02/
 ├── UNSa/                    # Entorno Java
-│   ├── Desafios_Repaso/     # Ejercicios de programación estructurada extra
+│   ├── desafio_repaso/      # Ejercicios de programación estructurada extra
 │   ├── TP01/
 │   └── TP02/
 └── docs/                    # Documentación interna
