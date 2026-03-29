@@ -14,11 +14,13 @@ poo-2026/
 │   ├── TP01/
 │   └── TP02/
 ├── UNSa/                    # Entorno Java
+│   ├── Desafios_Repaso/     # Ejercicios de programación estructurada extra
 │   ├── TP01/
 │   └── TP02/
 └── docs/                    # Documentación interna
     ├── adr/
     │   └── 0001-estrategia-monorepo.md # Justificación arquitectónica
+    │   └── 0002-estrategia-gitignore-multinivel.md
     └── WORKFLOW.md          # Guía del flujo de trabajo y entregas
 ```
 

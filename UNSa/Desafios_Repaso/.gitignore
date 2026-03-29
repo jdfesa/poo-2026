@@ -1,0 +1,19 @@
+# ==========================================
+# Archivos específicos de Java.
+# ==========================================
+
+# Archivos compilados (clases)
+*.class
+bin/
+out/
+build/
+target/
+
+# Archivos de empaquetado
+*.jar
+*.war
+*.ear
+*.nar
+
+# Logs
+*.log
