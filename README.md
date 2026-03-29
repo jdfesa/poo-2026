@@ -1,7 +1,7 @@
 # POO 2026 - Monorepo Académico
 
 Este repositorio contiene los trabajos prácticos, ejercicios y proyectos de la materia Programación Orientada a Objetos (POO), cursada en paralelo durante el ciclo lectivo 2026 en dos instituciones:
-- **UNSa (Universidad Nacional de Salta):** Desarrollo enfocado en Java.
+- **[UNSa (Universidad Nacional de Salta)](./UNSa/README.md):** Desarrollo enfocado en Java.
 - **IES N° 6023:** Desarrollo enfocado en Python.
 
 ## 📂 Estructura del Repositorio
