@@ -7,12 +7,12 @@ Aquí, todos los desarrollos están enfocados en el lenguaje **Java** y utilizan
 
 Si estás configurando tu entorno o es tu primera vez usando Java, a continuación tienes un rápido video introductorio (1 min) sobre cómo crear tu primer proyecto en el IDE NetBeans:
 
-*(Nota de visualización: Si GitHub no logra reproducir el video en su visor web integrado debido al códec del archivo MP4, puedes descargarlo directamente haciendo clic en el siguiente enlace)*
+*(Haz clic en el video o utiliza los controles para reproducirlo)*
 
-**[📥 Descargar y Ver el Video de Introducción a NetBeans (3.2 MB)](https://raw.githubusercontent.com/jdfesa/poo-2026/main/docs/assets/Como-crear-un-PROGRAMA-en-NETBEANS.mp4)**
-
-> **💡 Consejo para que el video se reproduzca automáticamente en GitHub sin descargar:**
-> Ve a la pestaña **"Issues"** de tu repositorio en GitHub, haz clic en "New Issue" (solo para ti, no necesitas guardarlo). Arrastra el archivo `.mp4` original desde tu computadora al cuadro de texto del Issue. GitHub lo subirá a sus servidores, lo transcodificará correctamente y te devolverá un enlace web (algo como `https://github.com/user-attachments/assets/...`). Copia ese enlace y pégalo aquí reemplazando esta sección; ¡se verá como un reproductor nativo perfecto!
+<video width="100%" controls>
+  <source src="https://raw.githubusercontent.com/jdfesa/poo-2026/main/docs/assets/Como-crear-un-PROGRAMA-en-NETBEANS.mp4" type="video/mp4">
+  Tu navegador no soporta la reproducción de video nativa.
+</video>
 
 ---
 
