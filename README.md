@@ -17,11 +17,16 @@ poo-2026/
 │   ├── TP01/
 │   └── TP02/
 └── docs/                    # Documentación interna
+    ├── adr/
+    │   └── 0001-estrategia-monorepo.md # Justificación arquitectónica
     └── WORKFLOW.md          # Guía del flujo de trabajo y entregas
 ```
 
-## ⚙️ Flujo de Trabajo
+## ⚙️ Flujo de Trabajo y Decisiones de Diseño
 
 Para mantener el control del historial de versiones en un único lugar y al mismo tiempo cumplir con los requisitos de entrega individuales de cada cátedra, este proyecto utiliza una estrategia de múltiples remotos combinada con `git subtree`.
 
-Para ver el detalle de los comandos de sincronización, convenciones de commits y el proceso de entrega, por favor revisa el archivo [WORKFLOW.md](./docs/WORKFLOW.md).
+La documentación del proyecto se divide siguiendo las mejores prácticas en la industria del software:
+
+* **[Flujo de Trabajo (WORKFLOW.md)](./docs/WORKFLOW.md):** Manual operativo para el día a día. Contiene los comandos exactos de sincronización y publicación de las entregas usando *Conventional Commits*.
+* **[Decisiones de Diseño (ADR 0001)](./docs/adr/0001-estrategia-monorepo.md):** Explica en detalle *por qué* se eligió usar un Monorepo con `git subtree`, abordando el problema de la fragmentación del historial y demostrando prácticas avanzadas de ingeniería de software.
