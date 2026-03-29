@@ -1,0 +1,20 @@
+# ==========================================
+# Archivos específicos del entorno local
+# y del Sistema Operativo.
+# Estos no se enviarán con `git subtree` al
+# repositorio remoto del profesor.
+# ==========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Entornos de desarrollo integrados (IDE) / Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

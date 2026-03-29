@@ -30,3 +30,4 @@ La documentación del proyecto se divide siguiendo las mejores prácticas en la 
 
 * **[Flujo de Trabajo (WORKFLOW.md)](./docs/WORKFLOW.md):** Manual operativo para el día a día. Contiene los comandos exactos de sincronización y publicación de las entregas usando *Conventional Commits*.
 * **[Decisiones de Diseño (ADR 0001)](./docs/adr/0001-estrategia-monorepo.md):** Explica en detalle *por qué* se eligió usar un Monorepo con `git subtree`, abordando el problema de la fragmentación del historial y demostrando prácticas avanzadas de ingeniería de software.
+* **[Estrategia .gitignore Multinivel (ADR 0002)](./docs/adr/0002-estrategia-gitignore-multinivel.md):** Justifica la arquitectura de exclusión de archivos multinivel adoptada para asegurar que el repositorio de destino (el del profesor) reciba un código fuente limpio y bien configurado.
