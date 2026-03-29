@@ -16,11 +16,20 @@ El desarrollo se alterna entre dos equipos físicos (Hackintosh y MacBook). Sigu
    ```
 
 2. **Desarrollo y Commits Semánticos:**
-   Usa el estándar *Conventional Commits* para mantener un historial legible. Ejemplos:
-   - `feat(unsa-tp1): implementar patrón Strategy para cálculo de impuestos`
-   - `fix(ies-tp2): corregir desbordamiento de índice en la lista de alumnos`
-   - `refactor(unsa-tp1): modularizar clases de persistencia de datos`
-   - `docs(general): actualizar diagramas UML en el README`
+   Usa el estándar *Conventional Commits* para mantener un historial legible. A continuación, se detalla cuándo usar cada tipo en el contexto de la cursada:
+
+   - `feat` (Feature): Para añadir un nuevo ejercicio, una nueva clase o una funcionalidad principal.
+     *Ej: `feat(unsa-tp1): implementar patrón Strategy para cálculo de impuestos`*
+   - `fix` (Bug Fix): Para corregir un error en un ejercicio o lógica existente.
+     *Ej: `fix(ies-tp2): corregir desbordamiento de índice en la lista de alumnos`*
+   - `refactor` (Refactor): Para mejorar el código existente sin añadir funcionalidades nuevas ni arreglar bugs (ej. renombrar variables, extraer métodos).
+     *Ej: `refactor(unsa-tp1): modularizar clases de persistencia de datos`*
+   - `docs` (Documentation): Para cambios exclusivos en archivos `README.md`, diagramas o comentarios.
+     *Ej: `docs(general): actualizar diagramas UML en el README`*
+   - `chore` (Tareas de mantenimiento): Para configuración de proyectos, IDEs (NetBeans/IntelliJ), cambios en `pom.xml`, o inicializar carpetas. Son tareas que no afectan al código fuente del usuario directamente.
+     *Ej: `chore(unsa-repaso): inicializar proyecto Maven JavaCodingChallenge en NetBeans`*
+   - `test` (Testing): Para añadir o modificar pruebas unitarias.
+     *Ej: `test(ies-tp1): agregar pruebas unitarias para clase Calculadora`*
 
 3. **Al finalizar la jornada:**
    ```bash
