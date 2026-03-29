@@ -7,7 +7,7 @@ Aquí, todos los desarrollos están enfocados en el lenguaje **Java** y utilizan
 
 Si estás configurando tu entorno o es tu primera vez usando Java, a continuación tienes un rápido video introductorio (1 min) sobre cómo crear tu primer proyecto en el IDE NetBeans:
 
-https://github.com/jdfesa/poo-2026/blob/main/docs/assets/Como-crear-un-PROGRAMA-en-NETBEANS.mp4
+![Cómo crear tu primer programa en NetBeans](../docs/assets/Como-crear-un-PROGRAMA-en-NETBEANS.gif)
 
 ---
 
