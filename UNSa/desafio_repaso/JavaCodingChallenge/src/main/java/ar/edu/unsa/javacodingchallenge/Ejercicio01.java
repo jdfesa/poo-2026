@@ -1,9 +1,7 @@
-
 package ar.edu.unsa.javacodingchallenge;
-
 import java.util.Arrays;
 import java.util.Scanner;
-/*
+/**
 Sort names in an alphabetical Order
 
 Write a program to sort the array elements in alphabetical order, 
@@ -41,7 +39,8 @@ public class Ejercicio01 {
         }
     }
 }
-/* ACLARACIÓN IMPORTANTE: 
+/*
+ ACLARACIÓN IMPORTANTE: 
    La línea 'keyboard.nextLine();' después de 'nextInt()' es necesaria para "limpiar" 
    el salto de línea (Enter) que queda en el sistema. 
    
