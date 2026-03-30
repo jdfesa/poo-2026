@@ -53,7 +53,7 @@ Para la resolución de los 15 ejercicios propuestos originalmente en OneCompiler
 
 - [x] Ejercicio 01: Sort names in an alphabetical Order
 - [x] Ejercicio 02: Print the sum of the digits of a given number
-- [ ] Ejercicio 03: Increment the digits of a number by 1
+- [x] Ejercicio 03: Increment the digits of a number by 1
 - [ ] Ejercicio 04: Print the sum of odd and even numbers present in an array
 - [ ] Ejercicio 05: Calculate perimeter of a Rectangle
 - [ ] Ejercicio 06: Convert age into number of days
