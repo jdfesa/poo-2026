@@ -47,3 +47,19 @@ git commit -m "feat(unsa): add Ejercicio01 and update JavaCodingChallenge"
 git push
 ```
 *(Esto envía el historial local a tu repositorio en la nube).*
+
+---
+
+## 4. ¿Cuál es la diferencia entre `git add .` y `git add <archivo>` cuando solo he modificado un archivo?
+
+Si **únicamente** has modificado o creado un solo archivo (ej. `Ejercicio02.java`) en todo el proyecto, **el resultado de ambos comandos será exactamente el mismo.**
+
+*   **`git add .`**: Le indica a Git que busque en todas las carpetas y subcarpetas desde tu ubicación actual y prepare todo lo que tenga cambios (archivos `U` y `M`). Si solo cambió un archivo, solo preparará ese. Es la opción más rápida y cómoda.
+*   **`git add <ruta-del-archivo>`**: Prepara únicamente ese archivo específico. Sin embargo, si estás en la raíz del proyecto, tendrías que escribir la ruta completa (ej: `git add UNSa/desafio_repaso/.../Ejercicio02.java`), lo cual es menos práctico.
+
+**¿Cuándo SÍ importa la diferencia?**
+Es fundamental elegir bien cuando tienes **varios archivos modificados al mismo tiempo**, pero quieres separarlos en *commits* diferentes para mantener el orden (una regla clave de **Conventional Commits**).
+
+*   **Ejemplo:** Imagina que creaste `Ejercicio02.java`, arreglaste un error en `Ejercicio01.java` y actualizaste el `README.md`.
+*   Si haces `git add .`, incluirás los **tres** cambios en un solo commit, mezclando un `feat`, un `fix` y un `docs`.
+*   En este escenario, lo correcto es usar `git add <ruta-del-README.md>` y hacer su commit de `docs: ...`. Luego preparar el siguiente archivo de forma individual y hacer su respectivo commit, y así sucesivamente.
