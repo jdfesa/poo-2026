@@ -47,4 +47,5 @@ public class Ejercicio01 {
    Si se quita: El primer espacio del arreglo se llenará con un texto vacío ("") 
    automáticamente, lo que desplazará los demás datos y causará que el último 
    valor ingresado (como "chris") quede fuera del arreglo y se pierda.
+prueba
 */
