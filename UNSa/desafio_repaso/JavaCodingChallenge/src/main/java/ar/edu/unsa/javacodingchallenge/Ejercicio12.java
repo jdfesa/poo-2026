@@ -3,9 +3,19 @@ package ar.edu.unsa.javacodingchallenge;
 
 import java.util.*;
 
-/**
- *
- * @author jd
+/*
+ 
+   Count the repetitive characters present in a string
+
+
+   Write a program to find the repetitive charcaters present in a string 
+   and count it's number of occurences.
+
+   Sample Input
+   onecompiler
+   Sample Output
+   o:2, e:2
+   
  */
 public class Ejercicio12 {
     public static void main(String[] args) {
