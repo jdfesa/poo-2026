@@ -3,7 +3,7 @@ title: "Desafío 0: Comenzando en Java"
 type: assign
 academic_status: completed # pending | in_progress | delayed | completed
 due_date: 2026-03-30
-tags: [academics/tads/poo, assign]
+tags: [academics/tup/poo, assign]
 export_target: pdf
 ---
 
