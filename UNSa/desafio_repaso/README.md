@@ -54,18 +54,18 @@ Para la resolución de los 15 ejercicios propuestos originalmente en OneCompiler
 - [x] Ejercicio 01: Sort names in an alphabetical Order
 - [x] Ejercicio 02: Print the sum of the digits of a given number
 - [x] Ejercicio 03: Increment the digits of a number by 1
-- [ ] Ejercicio 04: Print the sum of odd and even numbers present in an array
-- [ ] Ejercicio 05: Calculate perimeter of a Rectangle
-- [ ] Ejercicio 06: Convert age into number of days
-- [ ] Ejercicio 07: Check if sum of two numbers is less than 100?
-- [ ] Ejercicio 08: Print Hi UserName, Welcome to companyName from email-id
-- [ ] Ejercicio 09: Print fibonacci series
-- [ ] Ejercicio 10: Factorial of a given number
-- [ ] Ejercicio 11: Remove first and last character from a string
-- [ ] Ejercicio 12: Count the repetitive characters present in a string
-- [ ] Ejercicio 13: Convert Minutes into Seconds
-- [ ] Ejercicio 14: Calculate area of a triangle
-- [ ] Ejercicio 15: Check if a given number is palindrome or not
+- [x] Ejercicio 04: Print the sum of odd and even numbers present in an array
+- [x] Ejercicio 05: Calculate perimeter of a Rectangle
+- [x] Ejercicio 06: Convert age into number of days
+- [x] Ejercicio 07: Check if sum of two numbers is less than 100?
+- [x] Ejercicio 08: Print Hi UserName, Welcome to companyName from email-id
+- [x] Ejercicio 09: Print fibonacci series
+- [x] Ejercicio 10: Factorial of a given number
+- [x] Ejercicio 11: Remove first and last character from a string
+- [x] Ejercicio 12: Count the repetitive characters present in a string
+- [x] Ejercicio 13: Convert Minutes into Seconds
+- [x] Ejercicio 14: Calculate area of a triangle
+- [x] Ejercicio 15: Check if a given number is palindrome or not
 
 ---
 
