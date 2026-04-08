@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relaciones UML — POO | IES N° 6023</title>
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <!-- Highlight.js for code -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --r-background-color: #0a0a0f;
+      --r-main-font: 'Inter', sans-serif;
+      --r-heading-font: 'Inter', sans-serif;
+      --r-code-font: 'JetBrains Mono', monospace;
+      --r-main-font-size: 28px;
+      --r-heading-color: #e8e8f0;
+      --r-main-color: #c8c8d8;
+      --r-link-color: #7c6aef;
+      --r-selection-background-color: #7c6aef;
+      --r-selection-color: #fff;
+
+      --accent-primary: #7c6aef;
+      --accent-secondary: #06d6a0;
+      --accent-warning: #ffd166;
+      --accent-danger: #ef476f;
+      --accent-info: #118ab2;
+      --surface-1: #12121a;
+      --surface-2: #1a1a28;
+      --surface-3: #22223a;
+      --border-subtle: rgba(124, 106, 239, 0.2);
+    }
+
+    .reveal {
+      font-weight: 400;
+    }
+
+    /* ── Global Slide Styles ── */
+    .reveal .slides section {
+      text-align: left;
+      padding: 40px;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 2.4em;
+      line-height: 1.1;
+    }
+    .reveal h2 {
+      font-size: 1.6em;
+      margin-bottom: 0.6em;
+    }
+    .reveal h3 {
+      font-size: 1.15em;
+      color: var(--accent-primary);
+      margin-bottom: 0.5em;
+    }
+
+    .reveal p, .reveal li {
+      line-height: 1.65;
+      font-size: 0.78em;
+    }
+
+    .reveal ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .reveal ul li::before {
+      content: "›";
+      color: var(--accent-primary);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .reveal strong {
+      color: #f0f0ff;
+      font-weight: 600;
+    }
+
+    .reveal em {
+      color: var(--accent-secondary);
+      font-style: italic;
+    }
+
+    .reveal code {
+      font-family: var(--r-code-font);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.85em;
+      color: var(--accent-primary);
+    }
+
+    .reveal pre {
+      width: 100%;
+      box-shadow: none;
+    }
+    .reveal pre code {
+      padding: 20px 24px;
+      font-size: 0.7em;
+      line-height: 1.5;
+      border-radius: 12px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      max-height: 480px;
+    }
+
+    /* ── Title Slide ── */
+    .title-slide {
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title-slide .institution-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(124,106,239,0.15), rgba(6,214,160,0.1));
+      border: 1px solid var(--border-subtle);
+      border-radius: 50px;
+      padding: 8px 24px;
+      font-size: 0.48em;
+      color: var(--accent-secondary);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .title-slide h1 {
+      background: linear-gradient(135deg, #e8e8f0, var(--accent-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .title-slide .subtitle {
+      font-size: 0.75em;
+      color: var(--r-main-color);
+      font-weight: 400;
+      margin-bottom: 48px;
+      opacity: 0.8;
+    }
+
+    .title-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 40px;
+      font-size: 0.48em;
+      color: rgba(200, 200, 216, 0.7);
+      text-align: left;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 32px;
+      max-width: 600px;
+    }
+
+    .title-meta .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .title-meta .meta-label {
+      font-size: 0.8em;
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .title-meta .meta-value {
+      color: var(--r-main-color);
+      font-weight: 400;
+    }
+
+    /* ── Section Title Slides ── */
+    .section-title {
+      text-align: center !important;
+    }
+
+    .section-title .section-number {
+      font-size: 5em;
+      font-weight: 900;
+      background: linear-gradient(180deg, rgba(124,106,239,0.3), transparent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: -10px;
+    }
+
+    .section-title h2 {
+      font-size: 2em;
+      text-align: center;
+      background: linear-gradient(135deg, #f0f0ff, var(--accent-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-title .section-desc {
+      font-size: 0.7em;
+      color: rgba(200,200,216,0.6);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Relation Cards ── */
+    .relation-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 16px 0;
+    }
+
+    .relation-card.composicion {
+      border-left: 4px solid var(--accent-danger);
+    }
+    .relation-card.asociacion {
+      border-left: 4px solid var(--accent-info);
+    }
+    .relation-card.agregacion {
+      border-left: 4px solid var(--accent-warning);
+    }
+    .relation-card.herencia {
+      border-left: 4px solid var(--accent-secondary);
+    }
+
+    .relation-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .relation-badge {
+      font-size: 0.5em;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .relation-badge.comp { background: rgba(239,71,111,0.15); color: var(--accent-danger); }
+    .relation-badge.asoc { background: rgba(17,138,178,0.15); color: var(--accent-info); }
+    .relation-badge.agre { background: rgba(255,209,102,0.15); color: var(--accent-warning); }
+    .relation-badge.here { background: rgba(6,214,160,0.15); color: var(--accent-secondary); }
+
+    .relation-card h3 {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .relation-card p, .relation-card li {
+      font-size: 0.68em;
+      margin: 4px 0;
+    }
+
+    .relation-card .multiplicity {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-3);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-family: var(--r-code-font);
+      font-size: 0.65em;
+      color: var(--accent-primary);
+      margin-top: 8px;
+    }
+
+    /* ── Diagram Container ── */
+    .diagram-container {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diagram-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 16px 16px 0 0;
+    }
+
+    .diagram-container img {
+      max-width: 100%;
+      max-height: 420px;
+      border-radius: 8px;
+    }
+
+    .diagram-placeholder {
+      color: rgba(200,200,216,0.4);
+      font-size: 0.65em;
+      padding: 60px 20px;
+      font-style: italic;
+    }
+
+    /* ── Summary Table ── */
+    .reveal table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.55em;
+      background: var(--surface-2);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .reveal table thead th {
+      background: var(--surface-3);
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.9em;
+      border-bottom: 2px solid var(--accent-primary);
+    }
+
+    .reveal table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(124,106,239,0.08);
+      color: var(--r-main-color);
+      vertical-align: top;
+    }
+
+    .reveal table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .reveal table tbody tr:hover {
+      background: rgba(124,106,239,0.05);
+    }
+
+    /* ── Two Column Layout ── */
+    .two-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .two-cols-wide-left {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── Problem Statement ── */
+    .problem-box {
+      background: linear-gradient(135deg, rgba(124,106,239,0.08), rgba(6,214,160,0.05));
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 16px 0;
+    }
+
+    .problem-box p {
+      font-size: 0.65em;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Tags ── */
+    .tag {
+      display: inline-block;
+      font-size: 0.5em;
+      padding: 3px 12px;
+      border-radius: 50px;
+      font-weight: 500;
+      margin: 2px 4px 2px 0;
+    }
+
+    .tag-comp { background: rgba(239,71,111,0.12); color: var(--accent-danger); border: 1px solid rgba(239,71,111,0.25); }
+    .tag-asoc { background: rgba(17,138,178,0.12); color: var(--accent-info); border: 1px solid rgba(17,138,178,0.25); }
+    .tag-agre { background: rgba(255,209,102,0.12); color: var(--accent-warning); border: 1px solid rgba(255,209,102,0.25); }
+    .tag-here { background: rgba(6,214,160,0.12); color: var(--accent-secondary); border: 1px solid rgba(6,214,160,0.25); }
+
+    /* ── Conclusion Cards ── */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .guide-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .guide-card h4 {
+      font-size: 0.72em;
+      margin: 0 0 8px 0;
+      color: #f0f0ff;
+    }
+
+    .guide-card p {
+      font-size: 0.52em;
+      margin: 0;
+      line-height: 1.6;
+      color: rgba(200,200,216,0.75);
+    }
+
+    .guide-card .symbol {
+      font-family: var(--r-code-font);
+      font-size: 0.55em;
+      color: var(--accent-primary);
+      background: var(--surface-3);
+      padding: 2px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    /* ── Progress Bar ── */
+    .reveal .progress {
+      height: 4px;
+      background: rgba(124,106,239,0.15);
+    }
+    .reveal .progress span {
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    /* ── Controls ── */
+    .reveal .controls {
+      color: var(--accent-primary);
+    }
+
+    /* ── Slide Number ── */
+    .reveal .slide-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: rgba(200,200,216,0.5);
+      right: 16px;
+      bottom: 16px;
+    }
+
+    /* ── Glow effects ── */
+    .glow-purple {
+      text-shadow: 0 0 40px rgba(124,106,239,0.3);
+    }
+
+    .glow-green {
+      text-shadow: 0 0 40px rgba(6,214,160,0.3);
+    }
+
+    /* ── Background decorations ── */
+    .bg-dots {
+      background-image: radial-gradient(rgba(124,106,239,0.07) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* ── Key phrase highlight ── */
+    .highlight-box {
+      background: rgba(124,106,239,0.1);
+      border-left: 3px solid var(--accent-primary);
+      padding: 8px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      font-size: 0.68em;
+      font-style: italic;
+      color: rgba(200,200,216,0.85);
+    }
+
+    /* ── Emoji icon style ── */
+    .icon-xl {
+      font-size: 2em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 900px) {
+      .two-cols, .two-cols-wide-left, .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ═══════════════════════════════════════════
+           SLIDE 1 — PORTADA
+           ═══════════════════════════════════════════ -->
+      <section class="title-slide" data-background-color="#0a0a0f">
+        <div class="institution-badge">🏛️ IES N° 6023 "Dr. Alfredo Loutaif"</div>
+        <h1>Relaciones entre Clases<br>en UML</h1>
+        <p class="subtitle">Composición · Agregación · Asociación · Herencia</p>
+        <div class="title-meta">
+          <div class="meta-item">
+            <span class="meta-label">Carrera</span>
+            <span class="meta-value">Tec. Sup. en Análisis de Sistemas y Desarrollo de Software</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Materia</span>
+            <span class="meta-value">Programación Orientada a Objetos</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Profesor</span>
+            <span class="meta-value">Prof. Lic. Arroyo Carlos</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Alumno</span>
+            <span class="meta-value">José David Fernando Sandoval</span>
+          </div>
+          <div class="meta-item" style="grid-column: span 2; text-align: center;">
+            <span class="meta-label">Fecha de entrega</span>
+            <span class="meta-value">08 de Abril de 2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           SLIDE 2 — AGENDA
+           ═══════════════════════════════════════════ -->
+      <section data-auto-animate>
+        <h2 style="margin-bottom: 0.3em;">📋 Agenda</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <div class="relation-card" style="border-left-color: var(--accent-primary); padding: 16px 24px; margin: 0;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">01</span>
+              <div>
+                <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Guía Rápida de Relaciones UML</h3>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Asociación · Agregación · Composición · Herencia</p>
+              </div>
+            </div>
+          </div>
+          <div class="relation-card" style="border-left-color: var(--accent-danger); padding: 16px 24px; margin: 0;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">02</span>
+              <div>
+                <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Ejercicio 3 — Sistema de Ventas y Facturación</h3>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Factura · Pedido · LineaPedido · Producto</p>
+              </div>
+            </div>
+          </div>
+          <div class="relation-card" style="border-left-color: var(--accent-secondary); padding: 16px 24px; margin: 0;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">03</span>
+              <div>
+                <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Ejercicio 4 — Sistema de Reservas de un Hotel</h3>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Habitación · Huésped · Reserva · Factura · Área</p>
+              </div>
+            </div>
+          </div>
+          <div class="relation-card" style="border-left-color: var(--accent-warning); padding: 16px 24px; margin: 0;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">04</span>
+              <div>
+                <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Conclusión y Reflexión</h3>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Resumen visual de conceptos clave</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           SLIDE 3 — GUÍA RÁPIDA (Tabla)
+           ═══════════════════════════════════════════ -->
+      <section class="section-title" data-auto-animate>
+        <div class="section-number">01</div>
+        <h2>Guía Rápida de Relaciones UML</h2>
+        <p class="section-desc">Los cuatro tipos fundamentales de relaciones entre clases que necesitamos dominar.</p>
+      </section>
+
+      <section data-auto-animate>
+        <h2>📖 Tabla de Relaciones</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Relación</th>
+              <th>Símbolo</th>
+              <th>PlantUML</th>
+              <th>Concepto</th>
+              <th>Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-asoc">Asociación</span></td>
+              <td>Línea continua <strong>—</strong></td>
+              <td><code>--</code></td>
+              <td>"Conoce a" / "Usa un"</td>
+              <td>Cliente — Producto</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-agre">Agregación</span></td>
+              <td>Rombo hueco <strong>♢—</strong></td>
+              <td><code>o--</code></td>
+              <td>"Agrupa a"</td>
+              <td>Equipo ♢— Jugador</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-comp">Composición</span></td>
+              <td>Rombo relleno <strong>♦—</strong></td>
+              <td><code>*--</code></td>
+              <td>"Compuesto estrictamente por"</td>
+              <td>Casa ♦— Habitación</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-here">Herencia</span></td>
+              <td>Triángulo hueco <strong>◁—</strong></td>
+              <td><code>&lt;|--</code></td>
+              <td>"Es un tipo de"</td>
+              <td>Vehículo ◁— Auto</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Asociación Simple ── -->
+      <section data-auto-animate>
+        <h2>📖 Detalle de cada Relación</h2>
+        <div class="two-cols">
+          <div class="relation-card asociacion">
+            <div class="relation-header">
+              <span class="relation-badge asoc">Asociación</span>
+              <span style="font-size: 0.5em; color: rgba(200,200,216,0.5);">Línea continua <code>--</code></span>
+            </div>
+            <h3>🔗 "Conoce a" o "Usa un"</h3>
+            <p>Es la conexión lógica más básica. Dos clases interactúan pero <strong>ambas son completamente independientes</strong>.</p>
+            <p>Si borrás una del sistema, la otra sigue existiendo sin problemas.</p>
+            <div class="highlight-box">
+              💡 Un Cliente y un Producto. Si el cliente se da de baja, el producto sigue en el catálogo.
+            </div>
+          </div>
+          <div class="relation-card agregacion">
+            <div class="relation-header">
+              <span class="relation-badge agre">Agregación</span>
+              <span style="font-size: 0.5em; color: rgba(200,200,216,0.5);">Rombo hueco <code>o--</code></span>
+            </div>
+            <h3>📦 "Agrupa a" — Todo-Parte Débil</h3>
+            <p>Una clase (el Todo) contiene a otras (las Partes), pero <strong>las partes pueden vivir por su cuenta</strong>.</p>
+            <p>Si el "Todo" desaparece, las partes quedan sueltas o se reasignan, pero <strong>NO se borran</strong>.</p>
+            <div class="highlight-box">
+              💡 Un Equipo y sus Jugadores. Si el equipo se disuelve, los jugadores siguen existiendo.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-auto-animate>
+        <h2>📖 Detalle de cada Relación</h2>
+        <div class="two-cols">
+          <div class="relation-card composicion">
+            <div class="relation-header">
+              <span class="relation-badge comp">Composición</span>
+              <span style="font-size: 0.5em; color: rgba(200,200,216,0.5);">Rombo relleno <code>*--</code></span>
+            </div>
+            <h3>🔒 "Compuesto estrictamente por" — Todo-Parte Fuerte</h3>
+            <p>Hay una <strong>dependencia de vida total</strong>. La "Parte" no tiene sentido si no es dentro de ese "Todo".</p>
+            <p>Si eliminás el "Todo", las partes se <strong>destruyen obligatoriamente</strong> con él.</p>
+            <div class="highlight-box">
+              💡 Una Casa y una Habitación. Si demolés la casa, la habitación desaparece.
+            </div>
+          </div>
+          <div class="relation-card herencia">
+            <div class="relation-header">
+              <span class="relation-badge here">Herencia</span>
+              <span style="font-size: 0.5em; color: rgba(200,200,216,0.5);">Triángulo <code>&lt;|--</code></span>
+            </div>
+            <h3>🧬 "Es un tipo de" — Generalización</h3>
+            <p>Una clase base general con atributos comunes, y subclases más específicas que <strong>heredan todo del padre</strong> pero suman sus propias reglas.</p>
+            <p>Sirve para <strong>abstraer y no repetir</strong> atributos en todos lados.</p>
+            <div class="highlight-box">
+              💡 Vehículo (Base). Auto y Moto (Subclases). Ambos tienen ruedas y motor, pero se manejan distinto.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           EJERCICIO 3 — SISTEMA DE VENTAS
+           ═══════════════════════════════════════════ -->
+      <section class="section-title" data-auto-animate>
+        <div class="section-number">02</div>
+        <h2>Sistema de Ventas y Facturación</h2>
+        <p class="section-desc">IES N° 6023 — Gestión de facturación por servicios educativos</p>
+      </section>
+
+      <!-- Enunciado -->
+      <section data-auto-animate>
+        <h2>📝 Enunciado del Problema</h2>
+        <div class="problem-box">
+          <p>El sistema de ventas del IES N° 6023 gestiona la emisión de <strong>facturas</strong> por servicios educativos (aranceles, matrículas, actividades). Una Factura es el "todo" y está compuesta por uno o más <strong>Pedidos</strong>: si se elimina una factura, sus pedidos asociados pierden toda vigencia y deben eliminarse con ella.</p>
+          <br>
+          <p>Cada Pedido se compone de una o más <strong>LineasDePedido</strong>: cada línea registra el producto o servicio, la cantidad y el precio unitario. Una LineaPedido no tiene sentido ni existencia fuera del Pedido al que pertenece.</p>
+          <br>
+          <p>Cada LineaPedido referencia un <strong>Producto</strong> del catálogo institucional. El Producto sí puede existir de forma independiente.</p>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+          <span class="tag tag-comp">Composición ×2</span>
+          <span class="tag tag-asoc">Asociación ×1</span>
+        </div>
+      </section>
+
+      <!-- Clases identificadas -->
+      <section data-auto-animate>
+        <h2>🧩 Clases Identificadas</h2>
+        <div style="display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; justify-content: center;">
+          <div class="relation-card" style="flex: 1; min-width: 180px; text-align: center; border-left: 4px solid var(--accent-primary);">
+            <span style="font-size: 2em;">🧾</span>
+            <h3 style="text-align: center;">Factura</h3>
+            <p style="text-align: center; font-size: 0.6em; opacity: 0.6;">El "Todo" principal</p>
+          </div>
+          <div class="relation-card" style="flex: 1; min-width: 180px; text-align: center; border-left: 4px solid var(--accent-danger);">
+            <span style="font-size: 2em;">📋</span>
+            <h3 style="text-align: center;">Pedido</h3>
+            <p style="text-align: center; font-size: 0.6em; opacity: 0.6;">Parte de Factura</p>
+          </div>
+          <div class="relation-card" style="flex: 1; min-width: 180px; text-align: center; border-left: 4px solid var(--accent-warning);">
+            <span style="font-size: 2em;">📝</span>
+            <h3 style="text-align: center;">LineaPedido</h3>
+            <p style="text-align: center; font-size: 0.6em; opacity: 0.6;">Parte de Pedido</p>
+          </div>
+          <div class="relation-card" style="flex: 1; min-width: 180px; text-align: center; border-left: 4px solid var(--accent-info);">
+            <span style="font-size: 2em;">📦</span>
+            <h3 style="text-align: center;">Producto</h3>
+            <p style="text-align: center; font-size: 0.6em; opacity: 0.6;">Independiente (Catálogo)</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 28px;">
+          <div style="display: inline-flex; align-items: center; gap: 20px; font-size: 0.6em; color: rgba(200,200,216,0.5);">
+            <span>Factura</span>
+            <span style="color: var(--accent-danger);">♦——</span>
+            <span>Pedido</span>
+            <span style="color: var(--accent-danger);">♦——</span>
+            <span>LineaPedido</span>
+            <span style="color: var(--accent-info);">——</span>
+            <span>Producto</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diagrama UML -->
+      <section data-auto-animate>
+        <h2>📐 Diagrama UML</h2>
+        <div class="diagram-container">
+          <!-- Reemplazar con tu captura del diagrama PlantUML -->
+          <img id="diagrama-ventas" src="./diagramas/ventas.png" alt="Diagrama UML - Sistema de Ventas"
+               onerror="this.outerHTML='<div class=\'diagram-placeholder\'><p style=\'font-size:1.4em; margin-bottom:12px;\'>📊</p><p>Reemplazar con captura del diagrama PlantUML</p><p style=\'margin-top:8px; font-size:0.85em;\'>Colocar imagen en: <code>./diagramas/ventas.png</code></p></div>'">
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; justify-content: center;">
+          <div style="display: flex; align-items: center; gap: 8px; background: var(--surface-2); padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-comp" style="margin: 0;">Composición</span>
+            <span style="font-size: 0.55em; color: var(--r-main-color);">Factura ♦→ Pedido (1 a 1..*)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; background: var(--surface-2); padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-comp" style="margin: 0;">Composición</span>
+            <span style="font-size: 0.55em; color: var(--r-main-color);">Pedido ♦→ LineaPedido (1 a 1..*)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; background: var(--surface-2); padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-asoc" style="margin: 0;">Asociación</span>
+            <span style="font-size: 0.55em; color: var(--r-main-color);">LineaPedido → Producto (* a 1)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Relación 1: Factura → Pedido -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones</h2>
+        <div class="relation-card composicion">
+          <div class="relation-header">
+            <span class="relation-badge comp">Composición</span>
+            <h3>Relación 1: Factura → Pedido</h3>
+          </div>
+          <p><strong>¿Por qué Composición?</strong></p>
+          <p>La consigna indica que la Factura es el <em>"todo"</em>. Si se elimina una factura, sus pedidos <em>"pierden toda vigencia y deben eliminarse"</em>.</p>
+          <p>Es una <strong>dependencia de vida estricta</strong>: el pedido no existe sin la factura que lo contiene.</p>
+          <div class="multiplicity">Multiplicidad: 1 ♦—— 1..*</div>
+          <p style="margin-top: 8px;">Una (1) factura está compuesta por uno o más (1..*) pedidos.</p>
+        </div>
+      </section>
+
+      <!-- Relación 2: Pedido → LineaPedido -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones</h2>
+        <div class="relation-card composicion">
+          <div class="relation-header">
+            <span class="relation-badge comp">Composición</span>
+            <h3>Relación 2: Pedido → LineaPedido</h3>
+          </div>
+          <p><strong>¿Por qué Composición?</strong></p>
+          <p>El texto dice explícitamente: <em>"Una LineaPedido no tiene sentido ni existencia fuera del Pedido al que pertenece"</em>.</p>
+          <p>Nuevamente, <strong>dependencia estricta</strong>. Si se cancela y borra el pedido, sus líneas se destruyen con él.</p>
+          <div class="multiplicity">Multiplicidad: 1 ♦—— 1..*</div>
+          <p style="margin-top: 8px;">Un (1) pedido se compone de una o más (1..*) líneas de pedido.</p>
+        </div>
+      </section>
+
+      <!-- Relación 3: LineaPedido → Producto -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones</h2>
+        <div class="relation-card asociacion">
+          <div class="relation-header">
+            <span class="relation-badge asoc">Asociación Simple</span>
+            <h3>Relación 3: LineaPedido → Producto</h3>
+          </div>
+          <p><strong>¿Por qué Asociación Simple?</strong></p>
+          <p>La consigna aclara que el Producto <em>"sí puede existir de forma independiente (catálogo)"</em>.</p>
+          <p>La línea solo lo referencia para saber qué cobrar. Si el pedido y su línea se eliminan, el <strong>producto sigue intacto</strong> en el sistema.</p>
+          <div class="multiplicity">Multiplicidad: * —— 1</div>
+          <p style="margin-top: 8px;">Muchas (*) líneas de pedido distintas pueden apuntar a un (1) mismo producto del catálogo (ej: muchos alumnos pagando "Matrícula").</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           EJERCICIO 4 — SISTEMA DE HOTEL
+           ═══════════════════════════════════════════ -->
+      <section class="section-title" data-auto-animate>
+        <div class="section-number">03</div>
+        <h2>Sistema de Reservas de un Hotel</h2>
+        <p class="section-desc">Gestión de habitaciones, reservas, huéspedes y servicios adicionales</p>
+      </section>
+
+      <!-- Enunciado Hotel -->
+      <section data-auto-animate>
+        <h2>📝 Enunciado del Problema</h2>
+        <div class="problem-box">
+          <p>Un hotel gestiona sus <strong>habitaciones</strong> (simples, dobles, suites, familiares), las <strong>reservas</strong> realizadas por los huéspedes y los <strong>servicios adicionales</strong> contratados durante la estadía.</p>
+          <br>
+          <p>Los servicios adicionales son parte integral de la reserva y <strong>se eliminan si la reserva es cancelada</strong>. Los <strong>huéspedes</strong> se dividen en frecuentes y ocasionales. Las <strong>áreas</strong> del hotel agrupan empleados, pero si un área es eliminada, los empleados <strong>son reasignados, no dados de baja</strong>.</p>
+          <br>
+          <p>La <strong>factura</strong> contiene cargos por habitación y servicios adicionales. Los cargos son <strong>parte constitutiva</strong> de la factura.</p>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+          <span class="tag tag-here">Herencia ×2</span>
+          <span class="tag tag-comp">Composición ×2</span>
+          <span class="tag tag-agre">Agregación ×1</span>
+          <span class="tag tag-asoc">Asociación ×3</span>
+        </div>
+      </section>
+
+      <!-- Clases identificadas Hotel -->
+      <section data-auto-animate>
+        <h2>🧩 Clases Identificadas</h2>
+        <div class="two-cols">
+          <div>
+            <h3 style="color: var(--accent-secondary);">🏨 Jerarquía de Habitaciones</h3>
+            <div style="font-size: 0.65em; background: var(--surface-2); padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-subtle);">
+              <p style="margin: 4px 0;"><strong>Habitacion</strong> <span style="opacity:0.5;">(clase base)</span></p>
+              <p style="margin: 4px 0; padding-left: 20px;">├─ HabitacionSimple</p>
+              <p style="margin: 4px 0; padding-left: 20px;">├─ HabitacionDoble</p>
+              <p style="margin: 4px 0; padding-left: 20px;">├─ Suite</p>
+              <p style="margin: 4px 0; padding-left: 20px;">└─ HabitacionFamiliar</p>
+            </div>
+            <h3 style="color: var(--accent-secondary); margin-top: 20px;">👤 Jerarquía de Huéspedes</h3>
+            <div style="font-size: 0.65em; background: var(--surface-2); padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-subtle);">
+              <p style="margin: 4px 0;"><strong>Huesped</strong> <span style="opacity:0.5;">(clase base)</span></p>
+              <p style="margin: 4px 0; padding-left: 20px;">├─ HuespedFrecuente</p>
+              <p style="margin: 4px 0; padding-left: 20px;">└─ HuespedOcasional</p>
+            </div>
+          </div>
+          <div>
+            <h3 style="color: var(--accent-primary);">⚙️ Otras Clases</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">📅</span> <strong>Reserva</strong>
+              </div>
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">🧖</span> <strong>ServicioAdicional</strong>
+              </div>
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">🏢</span> <strong>Área</strong>
+              </div>
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">👔</span> <strong>Empleado</strong>
+              </div>
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">🧾</span> <strong>Factura</strong>
+              </div>
+              <div style="font-size: 0.65em; background: var(--surface-2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.4em;">💲</span> <strong>Cargo</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diagrama UML Hotel -->
+      <section data-auto-animate>
+        <h2>📐 Diagrama UML</h2>
+        <div class="diagram-container">
+          <img id="diagrama-hotel" src="./diagramas/hotel.png" alt="Diagrama UML - Sistema de Hotel"
+               onerror="this.outerHTML='<div class=\'diagram-placeholder\'><p style=\'font-size:1.4em; margin-bottom:12px;\'>📊</p><p>Reemplazar con captura del diagrama PlantUML</p><p style=\'margin-top:8px; font-size:0.85em;\'>Colocar imagen en: <code>./diagramas/hotel.png</code></p></div>'">
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
+          <div style="display: flex; align-items: center; gap: 6px; background: var(--surface-2); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-here" style="margin: 0; font-size: 0.42em;">Herencia</span>
+            <span style="font-size: 0.48em; color: var(--r-main-color);">Habitaciones · Huéspedes</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; background: var(--surface-2); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-comp" style="margin: 0; font-size: 0.42em;">Composición</span>
+            <span style="font-size: 0.48em; color: var(--r-main-color);">Reserva ♦→ Servicio · Factura ♦→ Cargo</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; background: var(--surface-2); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-agre" style="margin: 0; font-size: 0.42em;">Agregación</span>
+            <span style="font-size: 0.48em; color: var(--r-main-color);">Área ♢→ Empleado</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; background: var(--surface-2); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+            <span class="tag tag-asoc" style="margin: 0; font-size: 0.42em;">Asociación</span>
+            <span style="font-size: 0.48em; color: var(--r-main-color);">Huésped → Reserva → Habitación</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Herencia -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones — Hotel</h2>
+        <div class="relation-card herencia">
+          <div class="relation-header">
+            <span class="relation-badge here">Herencia</span>
+            <h3>Relación 1: Generalización en Habitaciones y Huéspedes</h3>
+          </div>
+          <div class="two-cols" style="gap: 16px;">
+            <div>
+              <p><strong>Habitaciones:</strong></p>
+              <p><code>Habitacion</code> es la <em>"clase base"</em> y las demás son <em>"subclases"</em> que especializan el cálculo de tarifas y servicios incluidos.</p>
+            </div>
+            <div>
+              <p><strong>Huéspedes:</strong></p>
+              <p>Ambos tipos comparten atributos (nombre, DNI, etc.) pero tienen <strong>distintos comportamientos</strong> en el cálculo de beneficios.</p>
+            </div>
+          </div>
+          <div class="highlight-box" style="margin-top: 16px;">
+            💡 La herencia se justifica porque hay atributos comunes que se heredan, y comportamientos específicos que se especializan en cada subclase.
+          </div>
+        </div>
+      </section>
+
+      <!-- Composición: Reserva → ServicioAdicional -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones — Hotel</h2>
+        <div class="relation-card composicion">
+          <div class="relation-header">
+            <span class="relation-badge comp">Composición</span>
+            <h3>Relación 2: Reserva → ServicioAdicional</h3>
+          </div>
+          <p><strong>¿Por qué Composición?</strong></p>
+          <p>Dependencia de vida estricta. El texto lo da servido: <em>"se eliminan si la reserva es cancelada"</em>.</p>
+          <p>Un servicio de spa o transfer <strong>no tiene sentido</strong> en el sistema si no está atado a la reserva que lo solicitó.</p>
+          <div class="multiplicity">Multiplicidad: 1 ♦—— *</div>
+          <p style="margin-top: 8px;">Una reserva puede tener cero o varios servicios adicionales.</p>
+        </div>
+      </section>
+
+      <!-- Agregación: Área → Empleado -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones — Hotel</h2>
+        <div class="relation-card agregacion">
+          <div class="relation-header">
+            <span class="relation-badge agre">Agregación</span>
+            <h3>Relación 3: Área → Empleado — ¡Punto Clave!</h3>
+          </div>
+          <p><strong>¿Por qué Agregación y no Composición?</strong></p>
+          <p>Esta es la <strong>diferencia fundamental</strong>. El texto aclara: <em>"Si un área es eliminada, los empleados son reasignados pero no dados de baja"</em>.</p>
+          <p>Es una relación "todo-parte" <strong>débil</strong>: el empleado existe en el sistema de forma independiente a si el área de "gastronomía" cierra temporalmente.</p>
+          <div class="multiplicity">Multiplicidad: 1 ♢—— *</div>
+          <p style="margin-top: 8px;">Un área agrupa a muchos empleados, pero ellos sobreviven sin ella.</p>
+        </div>
+      </section>
+
+      <!-- Composición: Factura → Cargo -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones — Hotel</h2>
+        <div class="relation-card composicion">
+          <div class="relation-header">
+            <span class="relation-badge comp">Composición</span>
+            <h3>Relación 4: Factura → Cargo</h3>
+          </div>
+          <p><strong>¿Por qué Composición?</strong></p>
+          <p>El texto dice que los cargos son <em>"parte constitutiva"</em> de la factura.</p>
+          <p>Un cargo específico (ej: "$50 por lavandería") <strong>no existe suelto</strong> en el sistema sin la factura que lo totaliza y documenta.</p>
+          <div class="multiplicity">Multiplicidad: 1 ♦—— 1..*</div>
+          <p style="margin-top: 8px;">Una factura tiene que tener al menos un cargo para existir.</p>
+        </div>
+      </section>
+
+      <!-- Asociaciones simples -->
+      <section data-auto-animate>
+        <h2>🔍 Análisis de Relaciones — Hotel</h2>
+        <div class="relation-card asociacion">
+          <div class="relation-header">
+            <span class="relation-badge asoc">Asociación Simple</span>
+            <h3>Relación 5: El "pegamento" del sistema</h3>
+          </div>
+          <p>Son las conexiones lógicas indispensables para que el negocio funcione:</p>
+          <div class="two-cols" style="gap: 12px; margin-top: 12px;">
+            <div style="background: var(--surface-3); padding: 14px 18px; border-radius: 10px;">
+              <p style="margin: 0;"><strong>Huésped — Reserva</strong></p>
+              <p style="margin: 4px 0 0 0; font-size: 0.62em; opacity: 0.7;">Un huésped (1) puede tener varias reservas (*)</p>
+            </div>
+            <div style="background: var(--surface-3); padding: 14px 18px; border-radius: 10px;">
+              <p style="margin: 0;"><strong>Reserva — Habitación</strong></p>
+              <p style="margin: 4px 0 0 0; font-size: 0.62em; opacity: 0.7;">Muchas reservas (*) pueden ocupar la misma habitación (1) a lo largo del año</p>
+            </div>
+          </div>
+          <div style="background: var(--surface-3); padding: 14px 18px; border-radius: 10px; margin-top: 12px;">
+            <p style="margin: 0;"><strong>Reserva — Factura</strong></p>
+            <p style="margin: 4px 0 0 0; font-size: 0.62em; opacity: 0.7;">Una reserva (1) genera una factura (0..1) al momento del check-out</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           CONCLUSIÓN
+           ═══════════════════════════════════════════ -->
+      <section class="section-title" data-auto-animate>
+        <div class="section-number">04</div>
+        <h2>Conclusión</h2>
+        <p class="section-desc">Resumen visual de los conceptos clave aprendidos</p>
+      </section>
+
+      <section data-auto-animate>
+        <h2>📌 Resumen: ¿Cómo distinguir cada relación?</h2>
+        <div class="guide-grid">
+          <div class="guide-card" style="border-top: 3px solid var(--accent-info);">
+            <span class="symbol">A -- B</span>
+            <h4>🔗 Asociación</h4>
+            <p><strong>Pregunta clave:</strong> ¿Si elimino A, B sigue existiendo sin problemas?<br><strong>Sí → Asociación.</strong> Ambos son independientes.</p>
+          </div>
+          <div class="guide-card" style="border-top: 3px solid var(--accent-warning);">
+            <span class="symbol">A o-- B</span>
+            <h4>📦 Agregación</h4>
+            <p><strong>Pregunta clave:</strong> ¿A "agrupa" a B, pero B sobrevive solo?<br><strong>Sí → Agregación.</strong> Todo-parte débil.</p>
+          </div>
+          <div class="guide-card" style="border-top: 3px solid var(--accent-danger);">
+            <span class="symbol">A *-- B</span>
+            <h4>🔒 Composición</h4>
+            <p><strong>Pregunta clave:</strong> ¿Si elimino A, B se destruye obligatoriamente?<br><strong>Sí → Composición.</strong> Dependencia de vida total.</p>
+          </div>
+          <div class="guide-card" style="border-top: 3px solid var(--accent-secondary);">
+            <span class="symbol">A &lt;|-- B</span>
+            <h4>🧬 Herencia</h4>
+            <p><strong>Pregunta clave:</strong> ¿B "es un tipo de" A con comportamiento propio?<br><strong>Sí → Herencia.</strong> Especialización.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide final -->
+      <section class="title-slide" data-background-color="#0a0a0f">
+        <div style="margin-bottom: 20px;">
+          <span style="font-size: 3em;">🎓</span>
+        </div>
+        <h1 style="font-size: 2em;">¡Gracias!</h1>
+        <p class="subtitle" style="margin-bottom: 20px;">Programación Orientada a Objetos — Relaciones UML</p>
+        <div style="font-size: 0.55em; color: rgba(200,200,216,0.4);">
+          José David Fernando Sandoval · IES N° 6023 "Dr. Alfredo Loutaif" · 2026
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      center: false,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      plugins: [RevealHighlight],
+      // Keyboard shortcuts
+      keyboard: {
+        // F key for fullscreen
+        70: () => {
+          const elem = document.documentElement;
+          if (!document.fullscreenElement) {
+            elem.requestFullscreen?.() || elem.webkitRequestFullscreen?.();
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

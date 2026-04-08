@@ -2,7 +2,7 @@
 
 Este repositorio contiene los trabajos prácticos, ejercicios y proyectos de la materia Programación Orientada a Objetos (POO), cursada en paralelo durante el ciclo lectivo 2026 en dos instituciones:
 - **[UNSa (Universidad Nacional de Salta)](./UNSa/README.md):** Desarrollo enfocado en Java.
-- **IES N° 6023:** Desarrollo enfocado en Python.
+- **[IES N° 6023](./IES6023/README.md):** Desarrollo enfocado en Python.
 
 ## 📂 Estructura del Repositorio
 
@@ -12,6 +12,7 @@ El proyecto está organizado como un *monorepo* para separar los entornos y leng
 poo-2026/
 ├── IES6023/                 # Entorno Python
 │   ├── TP01/
+│   │   └── presentacion_01/ # Presentación sobre conceptos de POO
 │   └── TP02/
 ├── UNSa/                    # Entorno Java
 │   ├── desafio_repaso/      # Ejercicios de programación estructurada extra
