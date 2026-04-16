@@ -112,6 +112,8 @@ git fetch profe-tp2
 git subtree push --prefix UNSa/TP02 profe-tp2 jose-david
 ```
 
+> ⚠️ **¿Desde dónde ejecutar estos comandos?** Desde **cualquier ubicación dentro de `poo-2026/`**. No necesitás estar en la carpeta del TP. El `--prefix UNSa/TP02` ya le indica a Git la ruta relativa desde la raíz del repositorio.
+
 > 💡 **Tip:** Si tenés varios TPs activos, repetí el Paso 1 y 2 para cada uno. Consultá la tabla de remotos en [WORKFLOW.md](./WORKFLOW.md) para ver las URLs exactas de cada TP.
 
 ### ¿Cómo verificar qué remotos tiene un equipo?
