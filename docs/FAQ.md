@@ -63,3 +63,20 @@ Es fundamental elegir bien cuando tienes **varios archivos modificados al mismo 
 *   **Ejemplo:** Imagina que creaste `Ejercicio02.java`, arreglaste un error en `Ejercicio01.java` y actualizaste el `README.md`.
 *   Si haces `git add .`, incluirás los **tres** cambios en un solo commit, mezclando un `feat`, un `fix` y un `docs`.
 *   En este escenario, lo correcto es usar `git add <ruta-del-README.md>` y hacer su commit de `docs: ...`. Luego preparar el siguiente archivo de forma individual y hacer su respectivo commit, y así sucesivamente.
+
+---
+
+## 5. Si el profesor dice "no trabajar en main", ¿por qué yo trabajo en `main`?
+
+Porque son **dos repositorios completamente distintos** con contextos diferentes:
+
+| | **Tu monorepo** (`jdfesa/poo-2026`) | **Repo del profesor** (`ramblas98/POO26_0N`) |
+|---|---|---|
+| **¿Quién trabaja?** | Solo vos | Todos los alumnos + el profesor |
+| **¿En qué rama?** | `main` (sos el único dueño) | `jose-david` (tu rama aislada) |
+
+Cuando el profesor dice *"no trabajen en main"*, le habla a los alumnos que clonan **su** repositorio directamente y trabajan dentro de él. Ellos necesitan ramas para no pisarse entre sí.
+
+Vos tenés tu **propio repositorio** donde sos el único contribuidor — no necesitás ramas para aislarte de nadie. Cuando ejecutás `git subtree push`, el comando extrae tu código y lo envía a tu rama `jose-david` en el repo del profesor, respetando su regla sin que vos tengas que cambiar tu forma de trabajar.
+
+**En resumen:** Trabajás en `main` en tu repo → `git subtree push` → llega a `jose-david` en el repo del profesor. Lo mejor de los dos mundos.
