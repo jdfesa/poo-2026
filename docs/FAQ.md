@@ -80,3 +80,44 @@ Cuando el profesor dice *"no trabajen en main"*, le habla a los alumnos que clon
 Vos tenés tu **propio repositorio** donde sos el único contribuidor — no necesitás ramas para aislarte de nadie. Cuando ejecutás `git subtree push`, el comando extrae tu código y lo envía a tu rama `jose-david` en el repo del profesor, respetando su regla sin que vos tengas que cambiar tu forma de trabajar.
 
 **En resumen:** Trabajás en `main` en tu repo → `git subtree push` → llega a `jose-david` en el repo del profesor. Lo mejor de los dos mundos.
+
+---
+
+## 6. Cambié de equipo (MacBook, otro PC). ¿Qué debo configurar para poder enviar al profesor?
+
+Cuando clonás o hacés `git pull` de tu monorepo en **otro equipo**, tu código y tu historial de commits se descargan correctamente. Sin embargo, los **remotos del profesor (`profe-tpN`) no viajan con el clon** — son configuración local de cada máquina.
+
+### ¿Qué SÍ viaja entre equipos? (automático con `git clone` / `git pull`)
+- ✅ Todo tu código fuente
+- ✅ Todo tu historial de commits
+- ✅ Los archivos `.gitignore`
+- ✅ Toda la documentación (WORKFLOW.md, FAQ.md, etc.)
+- ✅ El remoto `origin` (tu monorepo `jdfesa/poo-2026`)
+
+### ¿Qué NO viaja? (debés configurar manualmente)
+- ❌ Los remotos del profesor (`profe-tp2`, `profe-tp3`, etc.)
+
+### ¿Qué hacer exactamente en el equipo nuevo?
+
+Solo necesitás **agregar el remoto y hacer fetch**. **NO necesitás crear la rama de nuevo** — `jose-david` ya existe en el repositorio del profesor desde la primera vez que la creaste.
+
+```bash
+# Paso 1: Agregar el remoto (por cada TP activo)
+git remote add profe-tp2 https://github.com/ramblas98/POO26_02.git
+
+# Paso 2: Descargar las referencias
+git fetch profe-tp2
+
+# Listo. Ya podés hacer subtree push normalmente:
+git subtree push --prefix UNSa/TP02 profe-tp2 jose-david
+```
+
+> 💡 **Tip:** Si tenés varios TPs activos, repetí el Paso 1 y 2 para cada uno. Consultá la tabla de remotos en [WORKFLOW.md](./WORKFLOW.md) para ver las URLs exactas de cada TP.
+
+### ¿Cómo verificar qué remotos tiene un equipo?
+
+```bash
+git remote -v
+```
+
+Si solo ves `origin`, necesitás agregar los remotos del profesor. Si ves `profe-tpN`, ya estás listo.
