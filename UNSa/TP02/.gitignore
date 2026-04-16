@@ -1,0 +1,21 @@
+# ==========================================
+# Archivos específicos de Java.
+# Este archivo VIAJARÁ al repositorio del
+# profesor cuando uses `git subtree push`.
+# ==========================================
+
+# Archivos compilados (clases)
+*.class
+bin/
+out/
+build/
+target/
+
+# Archivos de empaquetado (Opcional, si no se pide el JAR)
+*.jar
+*.war
+*.ear
+*.nar
+
+# Logs
+*.log
