@@ -19,11 +19,11 @@ https://github.com/user-attachments/assets/f6c353c8-41dc-49b5-be7f-b59480df8e07
 
 - **Trabajos Prácticos Oficiales (Para entregar)**
   - `TP01/` - (En desarrollo...)
-  - `TP02/` - (Pendiente...)
+  - `TP02/` - (En desarrollo...)
 - **Ejercicios y Práctica (No obligatorios)**
   - [`desafio_repaso/`](./desafio_repaso/README.md) - Desafíos de programación estructurada y lógica.
 
 ---
 
 > 💡 **Recordatorio sobre las entregas:**
-> Cada TP (como `TP01` o `TP02`) cuenta con su propio `.gitignore` configurado para ignorar los binarios (`.class`, carpetas `build/`). Al finalizar un TP, utiliza el comando `git subtree` según lo indicado en el [Flujo de Trabajo (WORKFLOW.md)](../docs/WORKFLOW.md) para enviar tu código limpio al repositorio del profesor.
+> Cada TP (a partir del TP02) cuenta con su propio `.gitignore` configurado para ignorar los binarios (`.class`, carpetas `build/`). Durante el desarrollo, utilizá el comando `git subtree push` para enviar tu progreso de forma incremental a tu rama (`jose-david`) en el repositorio del profesor. Consultá la guía detallada en [WORKFLOW.md](../docs/WORKFLOW.md).

@@ -27,7 +27,7 @@ poo-2026/
 
 ## ⚙️ Flujo de Trabajo y Decisiones de Diseño
 
-Para mantener el control del historial de versiones en un único lugar y al mismo tiempo cumplir con los requisitos de entrega individuales de cada cátedra, este proyecto utiliza una estrategia de múltiples remotos combinada con `git subtree`.
+Para mantener el control del historial de versiones en un único lugar y al mismo tiempo cumplir con los requisitos de entrega individuales de cada cátedra, este proyecto utiliza una estrategia de múltiples remotos combinada con `git subtree` para sincronización incremental.
 
 La documentación del proyecto se divide siguiendo las mejores prácticas en la industria del software:
 

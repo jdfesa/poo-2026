@@ -27,3 +27,23 @@ Esta herramienta permite extraer una subcarpeta específica del monorepo junto c
 
 ### Negativas
 - **Complejidad operativa:** Requiere recordar comandos más avanzados de Git (`git subtree push --prefix ...`) en lugar de un simple `git push`. (Mitigado mediante la documentación del flujo en [WORKFLOW.md](../WORKFLOW.md)).
+
+---
+
+## Actualización: Envíos Incrementales
+
+**Fecha:** 2026-04-16
+**Estado:** Aceptado (Evolución)
+
+### Contexto de la Actualización
+La estrategia original contemplaba un único `git subtree push` al finalizar cada TP. Sin embargo, a partir del TP02 la cátedra requiere que el profesor pueda observar el progreso continuo del alumno, no solo el resultado final. Esto implica que se deben realizar múltiples envíos a lo largo del desarrollo de cada TP.
+
+### Decisión
+Se mantiene `git subtree` como mecanismo de sincronización, pero se pasa de un modelo de **"envío único al final"** a un modelo de **"envíos incrementales"**. Técnicamente, `git subtree push` ya soporta esto de forma nativa: en cada ejecución, recorre el historial, detecta los commits nuevos desde la última sincronización, y solo empuja los que aún no están en el remoto. No se producen commits duplicados.
+
+Adicionalmente, en lugar de empujar a la rama `main` del remoto del profesor, cada alumno empuja a **su propia rama** (en este caso, `jose-david`), evitando así conflictos entre compañeros.
+
+### Consecuencias Adicionales
+- **Visibilidad del proceso:** El profesor puede monitorear el avance en tiempo real, reforzando la demostración de trabajo continuo y no de "copia de último momento".
+- **Sin impacto técnico negativo:** `git subtree push` es idempotente. Ejecutarlo sin commits nuevos simplemente retorna `Everything up-to-date`.
+- **Documentación operativa actualizada** en [WORKFLOW.md](../WORKFLOW.md) con guía detallada paso a paso.
