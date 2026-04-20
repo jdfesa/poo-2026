@@ -226,4 +226,50 @@ git push profe-tpN $(git subtree split --prefix UNSa/TPxx):jose-david --force
 
 **Por qué sucede:** El remoto no está configurado. Probablemente estás en otro equipo (cambiaste de Hackintosh a MacBook o viceversa) y olvidaste configurar el remoto allí.
 
-**Solución:** Ejecutá el setup inicial (Paso 1 y 2 de la sección anterior). Los remotos son configuraciones locales y deben existir en cada equipo donde trabajes.
+**Solución:** Ejecutá el setup inicial (Paso 1 y 2 de la sección anterior). Los remotos son configuraciones locales y deben existir en cada equipo donde trabajes. Continúa a la siguiente pregunta frecuente para más detalle.
+
+### 5. ¿Cómo estructurar los proyectos de NetBeans siguiendo las normas de la cátedra?
+
+**Problema:** El profesor indicó claramente: *"Para cada ejercicio se debe crear un Proyecto con el nombre en mayúsculas TPX_EJX"*. Sin embargo, si creas múltiples proyectos de NetBeans, no quieres que las carpetas se mezclen o formen una estructura desordenada.
+
+**Estructura Correcta a lograr:**
+Todos los proyectos de un mismo Trabajo Práctico (ej. TP02) deben estar agrupados obligatoriamente dentro de una única carpeta general del TP.
+```text
+UNSa/
+└── TP02/
+    ├── .gitignore
+    ├── POO26 Trabajo Practico 2.pdf
+    ├── TP2_EJ1/                 <-- (Proyecto NetBeans Ejercicio 1)
+    │   ├── src/
+    │   └── nbproject/
+    └── TP2_EJ2/                 <-- (Proyecto NetBeans Ejercicio 2)
+        ├── src/
+        └── nbproject/
+```
+
+**Solución paso a paso en NetBeans:**
+1. Ve a tus archivos (en Finder) y asegúrate de tener una carpeta contenedora principal, por ejemplo: `UNSa/TP02`. Adentro de ella guarda tu `.pdf` y tu archivo `.gitignore`.
+2. Ve a NetBeans, haz clic en **File > New Project > Java with Ant > Java Application** (o Maven).
+3. En **Project Name**, escribe nombre exacto que pide el profesor, por ejemplo: `TP2_EJ1`.
+4. En **Project Location**, haz clic en Browse y **selecciona tu carpeta contenedora** `UNSa/TP02`.
+5. Fíjate cómo abajo dice **Project Folder** y asegúrate que sea exactamente `/ruta/hasta/.../UNSa/TP02/TP2_EJ1`. Dale a Finish.
+6. Repite los pasos 2 al 5 por cada nuevo ejercicio (`TP2_EJ2`, `TP2_EJ3`, etc.), seleccionando siempre `UNSa/TP02` como el "Project Location". 
+
+**Resumen:** En vez de tener un solo Proyecto con múltiples paquetes, tendrás **una sola carpeta física (TP02)** que contendrá adentro múltiples mini-proyectos de NetBeans (`TP2_EJ1`, `TP2_EJ2`, etc.). Git subirá todo este bloque junto al repositorio del profesor sin problemas porque está dentro de `UNSa/TP02`.
+
+### 6. Configuración pendiente en la MacBook en la Universidad (Segundo Equipo)
+
+**Problema:** Clonaste el repo principal en un equipo secundario (`/Users/jd/dev-macbook/poo-2026`) y al intentar mandar progreso con el comando `git subtree push`, te falla porque los remotos del profesor no existen.
+
+**Por qué sucede:** Cuando haces `git clone` de tu repositorio personal (`poo-2026`), **se copia el código, pero no se copian los "alias" a remotos externos** (como `profe-tp2`). Estos remotos viven en la configuración local de la máquina física.
+
+**Solución:**
+Cada vez que bajes el código a un ambiente por primera vez o comiences un nuevo TP en tu MacBook, debes volver a vincular el repo del profe:
+
+1. Abrí la terminal y asegurate de estar dentro del monorepo: `cd ~/dev-macbook/poo-2026`
+2. Agregá el remoto de forma local y descargate las ramas del profesor:
+   ```bash
+   git remote add profe-tp2 https://github.com/ramblas98/POO26_02.git
+   git fetch profe-tp2
+   ```
+3. **¡Listo!** Ya podés ejecutar el `git subtree push` normalmente para mandar tus avances. *Nota:* No necesitas correr el comando para crear la rama `jose-david` otra vez, porque la misma ya la habías creado en GitHub desde tu computadora principal. Solo debés conectarlas mediante los pasos mencionados.
