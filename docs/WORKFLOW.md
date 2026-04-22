@@ -273,3 +273,21 @@ Cada vez que bajes el código a un ambiente por primera vez o comiences un nuevo
    git fetch profe-tp2
    ```
 3. **¡Listo!** Ya podés ejecutar el `git subtree push` normalmente para mandar tus avances. *Nota:* No necesitas correr el comando para crear la rama `jose-david` otra vez, porque la misma ya la habías creado en GitHub desde tu computadora principal. Solo debés conectarlas mediante los pasos mencionados.
+
+### 7. Al hacer `git subtree push` la terminal me pide Username y Password
+
+**Problema:** Al ejecutar el comando de push hacia el repositorio del profesor, la terminal se queda esperando que ingreses tu nombre de usuario de GitHub y una contraseña.
+
+**Por qué sucede:** El remoto del profesor (ej. `profe-tp2`) fue agregado usando una URL con protocolo **HTTPS** (`https://github.com/...`). GitHub requiere que uses un Personal Access Token (PAT) cada vez que haces push por HTTPS.
+
+**Solución (Configurar SSH):**
+Si ya tienes configurada tu llave SSH en esa computadora (como suele ser el caso en tu Hackintosh y MacBook), puedes cambiar la URL del remoto para que use SSH. De esta manera, Git usará tus llaves automáticamente y no te pedirá contraseña.
+
+1. Cambia la URL del remoto de HTTPS a SSH (reemplaza `profe-tpN` y el repo según corresponda):
+   ```bash
+   git remote set-url profe-tp2 git@github.com:ramblas98/POO26_02.git
+   ```
+2. Vuelve a intentar tu comando `git subtree push`.
+
+> 💡 **Pro-Tip:** Para evitar este problema en el futuro, cuando agregues los remotos de los nuevos TPs (`profe-tp3`, `profe-tp4`, etc.), usa directamente la URL de SSH en lugar de la HTTPS:
+> `git remote add profe-tp3 git@github.com:ramblas98/POO26_03.git`
