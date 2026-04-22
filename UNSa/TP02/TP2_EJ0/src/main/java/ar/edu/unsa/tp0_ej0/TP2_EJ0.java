@@ -6,7 +6,7 @@ package ar.edu.unsa.tp0_ej0;
  *
  * @author jd
  */
-public class TP0_EJ0 {
+public class TP2_EJ0 {
 
     public static void main(String[] args) {
         // --- 1. CREACIÓN DE OBJETOS (Testeando Constructores) ---
