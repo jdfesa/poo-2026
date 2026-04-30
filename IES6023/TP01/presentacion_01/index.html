@@ -517,6 +517,51 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ── Lightbox Zoom ── */
+    .zoomable-img {
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+    .zoomable-img:hover {
+      opacity: 0.85;
+    }
+    .zoom-hint {
+      font-size: 0.48em;
+      color: rgba(200,200,216,0.4);
+      text-align: center;
+      margin-top: 6px;
+      font-style: italic;
+    }
+    #lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      cursor: zoom-out;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+    #lightbox-overlay.active {
+      display: flex;
+    }
+    #lightbox-overlay img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: 8px;
+      box-shadow: 0 0 60px rgba(124,106,239,0.25);
+    }
+    #lightbox-close-hint {
+      position: fixed;
+      top: 16px; right: 24px;
+      font-size: 14px;
+      color: rgba(200,200,216,0.5);
+      z-index: 10000;
+      font-family: 'Inter', sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -995,8 +1040,9 @@
         <h2>📐 Diagrama de Clases — Diseño</h2>
         <p style="font-size: 0.6em; color: rgba(200,200,216,0.6); margin-top: -8px; margin-bottom: 12px;">Modelo detallado: atributos, métodos, tipos, visibilidad, enumeraciones y notas de diseño.</p>
         <div class="diagram-container" style="padding: 16px;">
-          <img id="diagrama-hotel-diseno" src="./diagramas/diag-clases-diseno-hotel.png" alt="Diagrama de Clases de Diseño - Sistema de Hotel"
-               style="max-height: 520px;">
+          <img id="diagrama-hotel-diseno" class="zoomable-img" src="./diagramas/diag-clases-diseno-hotel.png" alt="Diagrama de Clases de Diseño - Sistema de Hotel"
+               style="max-height: 520px;" onclick="openLightbox(this.src)">
+          <p class="zoom-hint">🔍 Click en la imagen para ver a tamaño completo</p>
         </div>
         <div class="highlight-box" style="text-align: center; margin-top: 12px;">
           💡 El diagrama de <strong>diseño</strong> del hotel incorpora clases abstractas, enumeraciones (<code>EstadoReserva</code>) y notas que justifican cada decisión arquitectónica.
@@ -1178,6 +1224,30 @@
           }
         }
       }
+    });
+  </script>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox-overlay" onclick="closeLightbox()">
+    <span id="lightbox-close-hint">ESC o click para cerrar</span>
+    <img id="lightbox-img" src="" alt="Zoom">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const overlay = document.getElementById('lightbox-overlay');
+      document.getElementById('lightbox-img').src = src;
+      overlay.classList.add('active');
+      // Pause Reveal keyboard so arrows don't change slides
+      Reveal.configure({ keyboard: false });
+    }
+    function closeLightbox() {
+      const overlay = document.getElementById('lightbox-overlay');
+      overlay.classList.remove('active');
+      Reveal.configure({ keyboard: true });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
     });
   </script>
 </body>
