@@ -560,6 +560,15 @@
       <section data-auto-animate>
         <h2 style="margin-bottom: 0.3em;">📋 Agenda</h2>
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <div class="relation-card" style="border-left-color: var(--accent-info); padding: 16px 24px; margin: 0;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">00</span>
+              <div>
+                <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Introducción: Clase vs Objeto</h3>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Conceptos fundamentales de la POO</p>
+              </div>
+            </div>
+          </div>
           <div class="relation-card" style="border-left-color: var(--accent-primary); padding: 16px 24px; margin: 0;">
             <div style="display: flex; align-items: center; gap: 16px;">
               <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">01</span>
@@ -574,7 +583,7 @@
               <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">02</span>
               <div>
                 <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Ejercicio 3 — Sistema de Ventas y Facturación</h3>
-                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Factura · Pedido · LineaPedido · Producto</p>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Diagrama de Análisis · Diagrama de Diseño</p>
               </div>
             </div>
           </div>
@@ -583,7 +592,7 @@
               <span style="font-size: 1.4em; opacity: 0.3; font-weight: 800; font-family: var(--r-code-font);">03</span>
               <div>
                 <h3 style="margin:0; color: #f0f0ff; font-size: 0.9em;">Ejercicio 4 — Sistema de Reservas de un Hotel</h3>
-                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Habitación · Huésped · Reserva · Factura · Área</p>
+                <p style="margin: 2px 0 0 0; font-size: 0.55em; opacity: 0.6;">Diagrama de Análisis · Diagrama de Diseño</p>
               </div>
             </div>
           </div>
@@ -600,7 +609,27 @@
       </section>
 
       <!-- ═══════════════════════════════════════════
-           SLIDE 3 — GUÍA RÁPIDA (Tabla)
+           SLIDE — INTRODUCCIÓN: CLASE vs OBJETO
+           ═══════════════════════════════════════════ -->
+      <section class="section-title" data-auto-animate>
+        <div class="section-number">00</div>
+        <h2>Clase vs Objeto</h2>
+        <p class="section-desc">Antes de hablar de relaciones, repasemos los conceptos fundamentales de la POO.</p>
+      </section>
+
+      <section data-auto-animate>
+        <h2>🧱 Clase vs Objeto en POO</h2>
+        <div class="diagram-container" style="padding: 16px;">
+          <img src="./diagramas/clase_vs_objeto.png" alt="Clase vs Objeto en POO — La clase define el molde, el objeto es una instancia concreta"
+               style="max-height: 520px;">
+        </div>
+        <div class="highlight-box" style="text-align: center; margin-top: 12px;">
+          💡 La <strong>clase</strong> es el plano (molde/plantilla), el <strong>objeto</strong> es la construcción real (instancia concreta con datos).
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════
+           SLIDE — GUÍA RÁPIDA (Tabla)
            ═══════════════════════════════════════════ -->
       <section class="section-title" data-auto-animate>
         <div class="section-number">01</div>
@@ -777,13 +806,12 @@
         </div>
       </section>
 
-      <!-- Diagrama UML -->
+      <!-- Diagrama UML Análisis - Ventas -->
       <section data-auto-animate>
-        <h2>📐 Diagrama UML</h2>
+        <h2>📐 Diagrama de Clases — Análisis</h2>
+        <p style="font-size: 0.6em; color: rgba(200,200,216,0.6); margin-top: -8px; margin-bottom: 12px;">Modelo conceptual: identifica las clases y sus relaciones sin entrar en detalle de implementación.</p>
         <div class="diagram-container">
-          <!-- Reemplazar con tu captura del diagrama PlantUML -->
-          <img id="diagrama-ventas" src="./diagramas/ventas.png" alt="Diagrama UML - Sistema de Ventas"
-               onerror="this.outerHTML='<div class=\'diagram-placeholder\'><p style=\'font-size:1.4em; margin-bottom:12px;\'>📊</p><p>Reemplazar con captura del diagrama PlantUML</p><p style=\'margin-top:8px; font-size:0.85em;\'>Colocar imagen en: <code>./diagramas/ventas.png</code></p></div>'">
+          <img id="diagrama-ventas-analisis" src="./diagramas/diag-clases-analisis-ventas.png" alt="Diagrama de Clases de Análisis - Sistema de Ventas">
         </div>
         <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; justify-content: center;">
           <div style="display: flex; align-items: center; gap: 8px; background: var(--surface-2); padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-subtle);">
@@ -798,6 +826,19 @@
             <span class="tag tag-asoc" style="margin: 0;">Asociación</span>
             <span style="font-size: 0.55em; color: var(--r-main-color);">LineaPedido → Producto (* a 1)</span>
           </div>
+        </div>
+      </section>
+
+      <!-- Diagrama UML Diseño - Ventas -->
+      <section data-auto-animate>
+        <h2>📐 Diagrama de Clases — Diseño</h2>
+        <p style="font-size: 0.6em; color: rgba(200,200,216,0.6); margin-top: -8px; margin-bottom: 12px;">Modelo detallado: incluye atributos, métodos, tipos de datos y visibilidad para la implementación.</p>
+        <div class="diagram-container">
+          <img id="diagrama-ventas-diseno" src="./diagramas/diag-clases-diseno-ventas.png" alt="Diagrama de Clases de Diseño - Sistema de Ventas"
+               style="max-height: 500px;">
+        </div>
+        <div class="highlight-box" style="text-align: center; margin-top: 12px;">
+          💡 El diagrama de <strong>diseño</strong> agrega los detalles necesarios para codificar: atributos con tipos, métodos con parámetros y valores de retorno.
         </div>
       </section>
 
@@ -922,12 +963,12 @@
         </div>
       </section>
 
-      <!-- Diagrama UML Hotel -->
+      <!-- Diagrama UML Análisis - Hotel -->
       <section data-auto-animate>
-        <h2>📐 Diagrama UML</h2>
+        <h2>📐 Diagrama de Clases — Análisis</h2>
+        <p style="font-size: 0.6em; color: rgba(200,200,216,0.6); margin-top: -8px; margin-bottom: 12px;">Modelo conceptual: identifica las clases, jerarquías y relaciones del dominio hotelero.</p>
         <div class="diagram-container">
-          <img id="diagrama-hotel" src="./diagramas/hotel.png" alt="Diagrama UML - Sistema de Hotel"
-               onerror="this.outerHTML='<div class=\'diagram-placeholder\'><p style=\'font-size:1.4em; margin-bottom:12px;\'>📊</p><p>Reemplazar con captura del diagrama PlantUML</p><p style=\'margin-top:8px; font-size:0.85em;\'>Colocar imagen en: <code>./diagramas/hotel.png</code></p></div>'">
+          <img id="diagrama-hotel-analisis" src="./diagramas/diag-clases-analisis-hotel.png" alt="Diagrama de Clases de Análisis - Sistema de Hotel">
         </div>
         <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
           <div style="display: flex; align-items: center; gap: 6px; background: var(--surface-2); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border-subtle);">
@@ -946,6 +987,19 @@
             <span class="tag tag-asoc" style="margin: 0; font-size: 0.42em;">Asociación</span>
             <span style="font-size: 0.48em; color: var(--r-main-color);">Huésped → Reserva → Habitación</span>
           </div>
+        </div>
+      </section>
+
+      <!-- Diagrama UML Diseño - Hotel -->
+      <section data-auto-animate>
+        <h2>📐 Diagrama de Clases — Diseño</h2>
+        <p style="font-size: 0.6em; color: rgba(200,200,216,0.6); margin-top: -8px; margin-bottom: 12px;">Modelo detallado: atributos, métodos, tipos, visibilidad, enumeraciones y notas de diseño.</p>
+        <div class="diagram-container" style="padding: 16px;">
+          <img id="diagrama-hotel-diseno" src="./diagramas/diag-clases-diseno-hotel.png" alt="Diagrama de Clases de Diseño - Sistema de Hotel"
+               style="max-height: 520px;">
+        </div>
+        <div class="highlight-box" style="text-align: center; margin-top: 12px;">
+          💡 El diagrama de <strong>diseño</strong> del hotel incorpora clases abstractas, enumeraciones (<code>EstadoReserva</code>) y notas que justifican cada decisión arquitectónica.
         </div>
       </section>
 
