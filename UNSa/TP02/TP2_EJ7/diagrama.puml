@@ -1,0 +1,109 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+' Enums para mayor robustez
+enum Especialidad {
+  FAMILIA
+  TRAUMATOLOGIA
+  PEDIATRIA
+  INTERNISTA
+  OTORRINO
+}
+
+enum EstadoPaciente {
+  GRAVE
+  MEDIO
+  LEVE
+}
+
+class CuadroMedico {
+  - medicosPorEspecialidad: Map<Especialidad, List<Medico>>
+  
+  + insertarMedico(m: Medico): void
+  + eliminarMedico(m: Medico): void
+  + obtenerMedicoMayorDisponibilidad(e: Especialidad): Medico
+}
+
+class Medico {
+  - nombre: String {readOnly}
+  - matricula: int {readOnly}
+  - especialidad: Especialidad {readOnly}
+  - cupo: int
+  - historiasActivas: List<Historia>
+  
+  + Medico(nombre: String, matricula: int, especialidad: Especialidad, cupo: int)
+  + Medico(nombre: String, matricula: int) 
+  + getNombre(): String
+  + getMatricula(): int
+  + getEspecialidad(): Especialidad
+  + getCupo(): int
+  + setCupo(cupo: int): void
+  + estaDisponible(): boolean
+  + getNivelDisponibilidad(): int
+  + asignarHistoria(h: Historia): boolean
+  + darAlta(h: Historia): void
+}
+
+class Historia {
+  - {static} siguienteId: int = 1
+  - identificador: int {readOnly}
+  - codigoPaciente: String {readOnly}
+  - estadoInicial: EstadoPaciente {readOnly}
+  - especialidadRequerida: Especialidad {readOnly}
+  - altaPaciente: boolean
+  - medicoAsignado: Medico
+  
+  + Historia(codigoPaciente: String, estadoInicial: EstadoPaciente, especialidadRequerida: Especialidad)
+  + getIdentificador(): int
+  + getCodigoPaciente(): String
+  + getEstadoInicial(): EstadoPaciente
+  + getEspecialidadRequerida(): Especialidad
+  + isAltaPaciente(): boolean
+  + getMedicoAsignado(): Medico
+  + setMedicoAsignado(m: Medico): void
+  + marcarAlta(): void
+}
+
+' Relaciones
+CuadroMedico o--> "0..*" Medico : Agrupa >
+note on link
+  **AGREGACIÓN (Rombo vacío o-->)**
+  El Cuadro Médico agrupa una colección de Médicos.
+  Es una relación de "Todo-Parte" débil: si el Cuadro 
+  Médico se destruye, los Médicos siguen existiendo.
+end note
+
+Medico o--> "0..*" Historia : Atiende actualmente >
+note on link
+  **AGREGACIÓN (Rombo vacío o-->)**
+  El Médico tiene asignadas varias Historias. 
+  Las Historias se agrupan en su lista.
+end note
+
+Historia --> "1" Medico : Es atendido por >
+note on link
+  **ASOCIACIÓN DIRECTA (Flecha normal -->)**
+  Es una relación estructural simple. 
+  Significa que la Historia "conoce" o guarda 
+  la referencia al Médico que la atendió.
+end note
+
+' Dependencias de Enumeraciones
+Medico .up.> Especialidad
+note on link
+  **DEPENDENCIA (Flecha punteada .up.>)**
+  Significa "Usa a". El Médico usa la Especialidad 
+  (es el tipo de dato de uno de sus atributos).
+  No es una relación estructural fuerte como la asociación.
+end note
+
+Historia .up.> Especialidad
+Historia .up.> EstadoPaciente
+
+note right of Medico::getNivelDisponibilidad
+  Retorna (cupo - historiasActivas.size())
+  Se usa para poder ordenarlos
+end note
+
+@enduml
