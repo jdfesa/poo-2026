@@ -153,6 +153,7 @@ Al entrar a su repositorio en GitHub y seleccionar tu rama `jose-david`, verá:
 | TP   | Nombre del Remoto | URL del Repositorio                              | Tu Rama        | Estado     |
 |------|--------------------|--------------------------------------------------|----------------|------------|
 | TP02 | `profe-tp2`        | `https://github.com/ramblas98/POO26_02.git`      | `jose-david`   | ✅ Activo   |
+| TP03 | `profe-tp3`        | `git@github.com:ramblas98/POO26_03.git`           | `jose-david`   | ✅ Activo   |
 
 > 📝 **Instrucciones de mantenimiento:** Al comenzar cada nuevo TP, agregá una fila a esta tabla con los datos correspondientes. La URL seguirá el patrón `https://github.com/ramblas98/POO26_0N.git` y el nombre del remoto será `profe-tpN`.
 

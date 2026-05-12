@@ -18,6 +18,7 @@ poo-2026/
 │   ├── desafio_repaso/      # Ejercicios de programación estructurada extra
 │   ├── TP01/
 │   └── TP02/
+│   └── TP03/
 └── docs/                    # Documentación interna
     ├── adr/
     │   └── 0001-estrategia-monorepo.md # Justificación arquitectónica

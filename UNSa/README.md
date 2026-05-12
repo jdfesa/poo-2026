@@ -20,6 +20,7 @@ https://github.com/user-attachments/assets/f6c353c8-41dc-49b5-be7f-b59480df8e07
 - **Trabajos Prácticos Oficiales (Para entregar)**
   - `TP01/` - (En desarrollo...)
   - `TP02/` - (En desarrollo...)
+  - `TP03/` - (En desarrollo...)
 - **Ejercicios y Práctica (No obligatorios)**
   - [`desafio_repaso/`](./desafio_repaso/README.md) - Desafíos de programación estructurada y lógica.
 
